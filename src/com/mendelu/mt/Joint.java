@@ -18,7 +18,7 @@ public class Joint {
 	private float distance;
 	private Axis axis;
 	private String name;
-	
+	private double rotation;
 	
 	/**
 	 * @param motor - Motor, který rotoje kloubem
@@ -38,6 +38,24 @@ public class Joint {
 	}
 	
 	/**
+	 * Zkonstruuje kloub, který natáèí bod o nemìnný úhel (hodí se pro reprezentaci báze robotické ruky)
+	 * @param constantRotation Rotace
+	 * @param axis - Osa rotace
+	 * @param distance - Vzdálenost od dalšího bodu
+	 * @param next - Další kloub
+	 * @param name - Název kloubu
+	 */
+	public Joint(double constantRotation, Axis axis, float distance, Joint next, String name) {
+		this.rotation = constantRotation;
+		this.motor = null;
+		this.axis = axis;
+		this.distance = distance;
+		this.nextJoint = next;
+		this.name = name;
+	}
+
+	
+	/**
 	 * Vrací následující kloub
 	 * @return Joint - kloub, který navazuje na tento kloub
 	 */
@@ -50,7 +68,7 @@ public class Joint {
 	 * @return Matrix - rotaèní matice
 	 */
 	private Matrix getRotationMatrix() {
-		double angle = Math.toRadians((double)motor.getAngle());
+		double angle = motor != null ? Math.toRadians((double)motor.getAngle()) : rotation;
 		double[][] matrixArr = null;
 		double sine = Math.sin(angle);
 		double cosine = Math.cos(angle);
