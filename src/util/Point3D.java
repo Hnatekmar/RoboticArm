@@ -4,24 +4,24 @@ package util;
  * Tøída reprezentující bod v 3D prostoru
  */
 public class Point3D {
-	private float x;
-	private float y;
-	private float z;
-	public Point3D(float x, float y, float z) {
+	private double x;
+	private double y;
+	private double z;
+	public Point3D(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 	
-	public float getX() {
+	public double getX() {
 		return x;
 	}
 	
-	public float getY() {
+	public double getY() {
 		return y;
 	}
 	
-	public float getZ() {
+	public double getZ() {
 		return z;
 	}
 	
