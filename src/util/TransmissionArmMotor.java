@@ -1,13 +1,13 @@
 package util;
 
-import lejos.robotics.Servo;
+import lejos.nxt.NXTRegulatedMotor;
 
 /**
  * Reprezentuje motor s pøevodem
  */
 public class TransmissionArmMotor extends ArmMotor {
 	private float transmissionNumber;
-	public TransmissionArmMotor(Servo servo, boolean positiveDirection, float transmissionNumber) {
+	public TransmissionArmMotor(NXTRegulatedMotor servo, boolean positiveDirection, float transmissionNumber) {
 		// Servo otáèí motorem v opaèném smìru
 		super(servo, !positiveDirection);
 		this.transmissionNumber = transmissionNumber;
